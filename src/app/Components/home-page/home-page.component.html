@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="col-5 ">
+        <div class="input-group col-9">
+
+<input class="form-control py-2 border-right-0 border" type="text" value="search"placeholder="search by video title" (input)="Search()"  [(ngModel)]="Title">
+            <span class="input-group-append">
+                <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+            </span>
+        </div>
+</div>
+    
+
+<table class="table">
+    <thead>
+        <tr class="bg-danger text-light">
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Publish Date</th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let video of videos | paginate:config">
+            <td><div class="image"><img [src]="video.snippet.thumbnails.default.url"></div></td>
+            <td>{{video.snippet.title}}</td>
+            <td>{{video.snippet.publishedAt | date:'dd-MM-yyyy '}}</td>
+           
+            <td><button class="btn btn-danger" (click)="viewDetails(video.id)"> Details </button></td>
+
+        </tr>
+        
+    </tbody>
+</table>
+<div class="d-flex flex-column align-items-center">
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+</div>

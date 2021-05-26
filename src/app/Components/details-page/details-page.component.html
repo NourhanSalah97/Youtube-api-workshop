@@ -1,0 +1,38 @@
+<head>
+    <script defer src="/your-path-to-fontawesome/js/brands.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/solid.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/fontawesome.js"></script>
+</head>
+<div class="container-fluid" *ngIf="video">
+    <div class="container-fluid d-flex flex-column">
+        <div class="d-flex justify-content-center">
+            <a href="https://www.youtube.com/watch?v={{video.id}}" >
+                <img class="img-fluid "  [src]="video.snippet.thumbnails.high.url">
+            </a>
+        </div>
+        <hr>
+        <hr>
+        <div class="d-flex flex-row justify-content-between">
+            <h3>{{video.snippet.title}}</h3>
+            <button type="button" class="btn btn-danger" >Add to favorites</button>
+
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-between">
+            <h4>
+                Rate Now:
+                <ngb-rating [max]="5" [(rate)]="Rating" [readonly]="false"></ngb-rating>
+            </h4>
+            <h4>Duration: {{video.contentDetails.duration}}</h4>
+            <div class="row ">
+                <h4><i class="fa fa-eye"></i>{{video.statistics.viewCount}} </h4>
+                <h4><i class="fas fa-thumbs-up"></i>{{video.statistics.likeCount}}</h4>
+            </div>
+
+        </div>
+        <hr>
+        <div class="d-flex d-row" ></div><h4>Published on:{{video.snippet.publishedAt | date:'dd-MM-yyyy '}}</h4></div>
+        <div class="d-flex d-row" ><h6>{{video.snippet.description}}</h6></div>
+
+        </div>
+        
